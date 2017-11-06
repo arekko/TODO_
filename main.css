@@ -4,3 +4,6 @@
 }
 #one-note {
 }
+.complete {
+  text-decoration: line-through;
+}

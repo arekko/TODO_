@@ -1,5 +1,6 @@
 
 
+var handler = false;
 
 document.getElementById("input-btn").addEventListener("click", () => {
   let value = document.getElementById('inputval').value;
@@ -17,15 +18,22 @@ function addItemTodo(text) {
   var list = document.getElementById("ul-list");
 
   var item = document.createElement("li");
+  item.className = 'item';
   item.innerText = text;
 
-  var button = document.createElement("button");
-  button.innerText = "Delete note";
-  button.className = 'del-btn';
+  var del_button = document.createElement("button");
+  del_button.innerText = "Delete note";
+  del_button.className = 'del-btn';
 
-  button.addEventListener('click', removeItem);
+  var done_button = document.createElement("button");
+  done_button.innerText = "Complete";
+  done_button.className = 'com_btn';
 
-  item.appendChild(button);
+  del_button.addEventListener('click', removeItem);
+  done_button.addEventListener('click', completeTask);
+
+  item.appendChild(del_button);
+  item.appendChild(done_button);
 
   // ul.appendChild(item);
   list.insertBefore(item, list.childNodes[0]); //added item in begin
@@ -41,3 +49,7 @@ function removeItem() {
 func = () => {
   console.log(this);
 };
+
+function completeTask() {
+  var item = this.parentNode.className += ' complete';
+}
